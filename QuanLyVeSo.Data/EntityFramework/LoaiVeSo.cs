@@ -15,28 +15,28 @@ namespace QuanLyVeSo.Data.EntityFramework
         private DateTime _ngayXo;
         public int id
         {
-            get { return id; }
-            set { id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
         public string maLoaiVS
         {
-            get { return maLoaiVS; }
-            set { maLoaiVS = value; }
+            get { return _maLoaiVS; }
+            set { _maLoaiVS = value; }
         }
         public string tinhThanh
         {
-            get { return tinhThanh; }
-            set { tinhThanh = value; }
+            get { return _tinhThanh; }
+            set { _tinhThanh = value; }
         }
         public int gia
         {
-            get { return gia; }
-            set { gia = value; }
+            get { return _gia; }
+            set { _gia = value; }
         }
         public DateTime ngayXo
         {
-            get { return ngayXo; }
-            set { ngayXo = value; }
+            get { return _ngayXo; }
+            set { _ngayXo = value; }
         }
     }
 }

@@ -17,38 +17,38 @@ namespace QuanLyVeSo.Data.EntityFramework
         private int _dangHoatDong;
         public int id
         {
-            get { return id; }
-            set { id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
         public string maDL
         {
-            get { return maDL; }
-            set { maDL = value; }
+            get { return _maDL; }
+            set { _maDL = value; }
         }
         public string tenDL
         {
-            get { return tenDL; }
-            set { tenDL = value; }
+            get { return _tenDL; }
+            set { _tenDL = value; }
         }
         public string diaChi
         {
-            get { return diaChi; }
-            set { diaChi = value; }
+            get { return _diaChi; }
+            set { _diaChi = value; }
         }
         public string sdt
         {
-            get { return sdt; }
-            set { sdt = value; }
+            get { return _sdt; }
+            set { _sdt = value; }
         }
         public string email
         {
-            get { return email; }
-            set { email = value; }
+            get { return _email; }
+            set { _email = value; }
         }
         public int dangHoatDong
         {
-            get { return dangHoatDong; }
-            set { dangHoatDong = value; }
+            get { return _dangHoatDong; }
+            set { _dangHoatDong = value; }
         }
 
     }

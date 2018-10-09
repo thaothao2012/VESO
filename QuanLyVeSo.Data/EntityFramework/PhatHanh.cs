@@ -16,63 +16,64 @@ namespace QuanLyVeSo.Data.EntityFramework
         private int _soLuongBan;
         private float _doanhThu;
         private float _hoaHong;
-        private int _conNo;
+        private int _daNop;
+        private float _conNo;
         private DateTime _ngayNop;
 
         public int id
         {
-            get { return id; }
-            set { id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
         public string maDL
         {
-            get { return maDL; }
+            get { return _maDL; }
             set { maDL = value; }
         }
         public string maLoaiVS
         {
-            get { return maLoaiVS; }
-            set { maLoaiVS = value; }
+            get { return _maLoaiVS; }
+            set { _maLoaiVS = value; }
         }
         public int soLuong
         {
-            get { return soLuong; }
-            set { soLuong = value; }
+            get { return _soLuong; }
+            set { _soLuong = value; }
         }
         public DateTime ngayNhan
         {
-            get { return ngayNhan; }
-            set { ngayNhan = value; }
+            get { return _ngayNhan; }
+            set { _ngayNhan = value; }
         }
         public int soLuongBan
         {
-            get { return soLuongBan; }
-            set { soLuongBan = value; }
+            get { return _soLuongBan; }
+            set { _soLuongBan = value; }
         }
         public float doanhThu
         {
-            get { return doanhThu; }
-            set { doanhThu = value; }
+            get { return _doanhThu; }
+            set { _doanhThu = value; }
         }
         public float hoaHong
         {
-            get { return hoaHong; }
-            set { hoaHong = value; }
+            get { return _hoaHong; }
+            set { _hoaHong = value; }
         }
         public int daNop
         {
-            get { return daNop; }
-            set { daNop = value; }
+            get { return _daNop; }
+            set { _daNop = value; }
         }
         public float conNo
         {
-            get { return conNo; }
-            set { conNo = value; }
+            get { return _conNo; }
+            set { _conNo = value; }
         }
         public DateTime ngayNop
         {
-            get { return ngayNop; }
-            set { ngayNop = value; }
+            get { return _ngayNop; }
+            set { _ngayNop = value; }
         }
     }
 }
