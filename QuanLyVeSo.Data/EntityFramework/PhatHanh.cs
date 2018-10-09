@@ -4,6 +4,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class PhatHanh
     {
+
         public int ID { get; set; }
 
         public string MaDaiLy { get; set; }
@@ -23,5 +24,6 @@ namespace QuanLyVeSo.Data.EntityFramework
         public int ConNo { get; set; }
 
         public DateTime NgayNop { get; set; }
+
     }
 }
