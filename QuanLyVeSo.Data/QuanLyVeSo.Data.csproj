@@ -51,11 +51,22 @@
     <Compile Include="EntityFramework\DaiLy.cs" />
     <Compile Include="EntityFramework\LoaiVeSo.cs" />
     <Compile Include="EntityFramework\PhatHanh.cs" />
+    <Compile Include="EntityFramework\VeSoDbContext.cs" />
+    <Compile Include="Migrations\201810091719041_Initial_Datbase.cs" />
+    <Compile Include="Migrations\201810091719041_Initial_Datbase.Designer.cs">
+      <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810091719041_Initial_Datbase.resx">
+      <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

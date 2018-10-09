@@ -1,14 +1,19 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyVeSo.Data.EntityFramework
 {
     public class PhatHanh
     {
-
         public int ID { get; set; }
 
+        [Column(TypeName = "nvarchar")]
+        [StringLength(20)]
         public string MaDaiLy { get; set; }
 
+        [Column(TypeName = "nvarchar")]
+        [StringLength(20)]
         public string MaLoaiVeSo { get; set; }
 
         public int SoLuong { get; set; }
@@ -21,9 +26,8 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         public decimal HoaHong { get; set; }
 
-        public int ConNo { get; set; }
+        public decimal ConNo { get; set; }
 
         public DateTime NgayNop { get; set; }
-
     }
 }
