@@ -1,3 +1,4 @@
+---new database
 create  database QuanLyVeSo
 use QuanLyVeSo
 create table DaiLy
