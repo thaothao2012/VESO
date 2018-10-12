@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyVeSo.Data.EntityFramework
 {
-    public class PhatHanh
+    public class PhieuPhatHanh
     {
         public int ID { get; set; }
 

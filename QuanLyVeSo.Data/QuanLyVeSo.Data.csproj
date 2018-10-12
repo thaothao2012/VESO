@@ -57,6 +57,7 @@
       <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PhieuPhatHanh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
