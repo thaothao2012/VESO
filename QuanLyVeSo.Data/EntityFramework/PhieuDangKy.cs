@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,5 +24,6 @@ namespace QuanLyVeSo.Data.EntityFramework
         public int TongSoLuongDangKy { get; set; }
 
         public DaiLy DaiLy { get; set; }
+        public ICollection<ChiTietPhieuDangKy> ChiTietPhieuDangKys { get; set; }
     }
 }

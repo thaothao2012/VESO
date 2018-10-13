@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyVeSo.Data.EntityFramework
 {
-    class ChiTietPhieuDangKy
+    public class ChiTietPhieuDangKy
     {
         [Key]
         public int MaChiTietPhieuDangKy { get; set; }
@@ -16,6 +16,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         [Column(TypeName = "varchar")]
         [StringLength(15)]
+        [ForeignKey("PhieuDangKy")]
         public string MaPhieuDangKy { get; set; }
 
 
@@ -25,5 +26,6 @@ namespace QuanLyVeSo.Data.EntityFramework
 
 
         public int SoLuongDangKy { get; set; }
+        public PhieuDangKy PhieuDangKy { get; set; }
     }
 }

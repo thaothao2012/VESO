@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,5 +31,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 
 
         public DaiLy DaiLy { get; set; }
+        public ICollection<ChiTietPhieuPhatHanh> ChiTietPhieuPhatHanhs { get; set; }
+
     }
 }
