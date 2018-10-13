@@ -1,90 +1,88 @@
-drop database QuanLyVeSo
-create database QuanLyVeSo
+---new database Thinh
+create  database QuanLyVeSo
 use QuanLyVeSo
 create table DaiLy
 (
-	id int primary key identity(1,1),
-	maDL varchar(15) not null unique,
-	tenDL nvarchar(100) not null,
-	diaChi nvarchar(100) not null,
-	soDT varchar(15) not null,
-	email varchar(50) not null,
-	trangThai int not null
+	MaDaiLy varchar(15),
+	TenDaiLy nvarchar(100) not null,
+	DiaChi nvarchar(100) not null,
+	SoDienThoai varchar(15) not null,
+	Email varchar(50) not null,
+	TrangThai int not null,
+	primary key(MaDaiLy)
 )
 create table LoaiVeSo
 (
-	id int primary key identity(1,1),
-	maLoaiVS varchar(15) not null unique,
-	tenTinhThanh nvarchar(50) not null
+	MaLoaiVeSo varchar(15),
+	TenTinhThanh nvarchar(50) not null,
+	primary key(MaLoaiVeSo)
 )
-create table PhieuPhatHanh
+create  table PhieuPhatHanh
 (
-	id int primary key identity(1,1),
-	maPhieuPhatHanh varchar(15) not null unique,
-	daiLyId int,
-	loaiVSId int,
-	ngayPhatHanh date not null,
-	soLuongPhatHanh int not null,
-	soLuongBanDuoc int
+	MaPhieuPhatHanh int primary key identity(1,1) ,
+	MaDaiLy varchar(15),
+	MaLoaiVeSo varchar(15),
+	NgayPhatHanh date not null,
+	SoLuongPhatHanh int not null,
+	SoLuongBanDuoc int
 )
 create table PhieuDangKy
 (
-	id int primary key identity(1,1),
-	maPhieuDK varchar(15) not null unique,
-	daiLyId int,
-	ngayDK date,
-	soLuongDK int
+	MaPhieuDangKy int primary key identity(1,1) ,
+	MaDaiLy varchar(15),
+	NgayDangKy date,
+	SoLuongDangKy int
 )
 create table PhieuThu
 (
-	id int primary key identity(1,1),
-	maPhieuThu varchar(15) not null unique,
-	daiLyId int,
-	ngayThu date,
-	tienThu int
+	MaPhieuThu int primary key identity(1,1) ,
+	MaDaiLy varchar(15),
+	NgayThu date,
+	TienThu int
 )
 create table GiaiThuong
 (
-	id int primary key identity(1,1),
-	tenGiai nvarchar(50),
-	tienThuong int
+	MaGiaiThuong varchar(15),
+	TenGiai nvarchar(50),
+	TienThuong int,
+	primary key(MaGiaiThuong)
 )
 create table KetQuaXoSo
 (
-	id int primary key identity(1,1),
-	loaiVSId int,
-	ngayXo date,
-	giaiId int,
-	soTrung varchar(7)
+	MaKetQuaXoSo int primary key identity(1,1),
+	MaLoaiVeSo varchar(15),
+	MaGiaiThuong varchar(15),
+	NgayXo date,
+	SoTrung varchar(7)
 )
 create table CongNo
 (
-	id int primary key identity(1,1),
-	daiLyId int,
-	soTienBan int,
-	hoaHong float default 0.1,
-	ngayNo date,
-	soTienNo int
+	MaCongNo int primary key identity(1,1),
+	MaDaiLy varchar(15),
+	SoTienBan int,
+	HoaHong float default 0.1,
+	NgayNo date,
+	SoTienNo int
 )
 create table GiaVeSo
 (
-	id int primary key identity(1,1),
-	gia int,
-	ngayBatDau date,/*ngay bat dau ap dung*/
-	ngayKetThuc date,/*ngay ket thuc ap dung*/
-	trangThai int /*1 dang ap dung, 0 het ap dung*/
+	MaGia int primary key identity(1,1),
+	Gia int,
+	NgayBatDau date,/*ngay bat dau ap dung*/
+	NgayKetThuc date,/*ngay ket thuc ap dung*/
+	TrangThai int /*1 dang ap dung, 0 het ap dung*/
 )
 
-alter table PhieuPhatHanh add constraint pph_dl_fk foreign key (daiLyId) references DaiLy(id)
+alter table PhieuPhatHanh add constraint pph_dl_fk foreign key (MaDaiLy) references DaiLy(MaDaiLy)
 --alter table PhieuPhatHanh drop constraint lvs_dl_fk
-alter table PhieuPhatHanh add constraint pph_lvs_fk foreign key (loaiVSId) references LoaiVeSo(id)
+alter table PhieuPhatHanh add constraint pph_lvs_fk foreign key (MaLoaiVeSO) references LoaiVeSo(MaLoaiVeSO)
 ----
-alter table PhieuDangKy add constraint pdk_dl_fk foreign key (daiLyId) references DaiLy(id)
+alter table PhieuDangKy add constraint pdk_dl_fk foreign key (MaDaiLy) references DaiLy(MaDaiLy)
 ----
-alter table PhieuThu add constraint pt_dl_fk foreign key (daiLyId) references DaiLy(id)
+alter table PhieuThu add constraint pt_dl_fk foreign key (MaDaiLy) references DaiLy(MaDaiLy)
 ----
-alter table CongNo add constraint cn_dl_fk foreign key (daiLyId) references DaiLy(id)
+alter table CongNo add constraint cn_dl_fk foreign key (MaDaiLy) references DaiLy(MaDaiLy)
 ----
-alter table KetQuaXoSo add constraint kqxs_lvs_fk foreign key (loaiVSId) references LoaiVeSo(id)
+alter table KetQuaXoSo add constraint kqxs_lvs_fk foreign key (MaLoaiVeSo) references LoaiVeSo(MaLoaiVeSo)
 ----
-alter table KetQuaXoSo add constraint kqxs_g_fk foreign key (giaiId) references GiaiThuong(id)
+alter table KetQuaXoSo add constraint kqxs_g_fk foreign key (MaGiaiThuong) references GiaiThuong(MaGiaiThuong)
