@@ -11,19 +11,37 @@ namespace QuanLyVeSo.Data.EntityFramework
 
     public class DaiLy
     {
-        public int ID { get; set; }
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
+        [Key]
+        public string MaDaiLy { get; set; }
 
-        [Index("MaDaiLyIndex", IsUnique = true)]
         [Column(TypeName = "nvarchar")]
-        [StringLength(20)]
-        public string Ma { get; set; }
+        [StringLength(100)]
+        [Required]
+        public string TenDaiLy { get; set; }
 
-        public string Ten { get; set; }
 
+
+        [Column(TypeName = "nvarchar")]
+        [StringLength(100)]
+        [Required]
         public string DiaChi { get; set; }
 
+
+
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
+        public string SoDienThoai { get; set; }
+
+
+        [Column(TypeName = "varchar")]
+        [StringLength(50)]
+        [Required]
         public string Email { get; set; }
 
-        public TrangThai TrangThai { get; set; }
+
+        [Required]
+        public int TrangThai { get; set; }
     }
 }

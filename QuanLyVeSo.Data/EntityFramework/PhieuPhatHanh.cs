@@ -6,28 +6,28 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class PhieuPhatHanh
     {
-        public int ID { get; set; }
+        [Key]
+        public int MaPhieuPhatHanh { get; set; }
 
-        [Column(TypeName = "nvarchar")]
-        [StringLength(20)]
+
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
         public string MaDaiLy { get; set; }
 
-        [Column(TypeName = "nvarchar")]
-        [StringLength(20)]
+
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
         public string MaLoaiVeSo { get; set; }
 
-        public int SoLuong { get; set; }
 
-        public DateTime NgayNhan { get; set; }
+        [Column(TypeName = "date")]
+        [Required]
+        public DateTime NgayPhatHanh { get; set; }
 
-        public int SoLuongBan { get; set; }
+        [Required]
+        public int SoLuongPhatHanh { get; set; }
 
-        public decimal DoanhThu { get; set; }
 
-        public decimal HoaHong { get; set; }
-
-        public decimal ConNo { get; set; }
-
-        public DateTime NgayNop { get; set; }
+        public int SoLuongBanDuoc { get; set; }
     }
 }

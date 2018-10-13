@@ -7,7 +7,11 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class GiaiThuong
     {
-        public int ID { get; set; }
+        [Column(TypeName ="varchar")]
+        [StringLength(15)]
+        [Key]
+        public string MaGiaiThuong { get; set; }
+
 
         [Column(TypeName = "nvarchar")]
         [StringLength(50)]

@@ -48,26 +48,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\CongNo.cs" />
     <Compile Include="EntityFramework\DaiLy.cs" />
+    <Compile Include="EntityFramework\GiaiThuong.cs" />
+    <Compile Include="EntityFramework\GiaVeSo.cs" />
+    <Compile Include="EntityFramework\KetQuaXoSo.cs" />
     <Compile Include="EntityFramework\LoaiVeSo.cs" />
-    <Compile Include="EntityFramework\PhatHanh.cs" />
+    <Compile Include="EntityFramework\PhieuDangKy.cs" />
+    <Compile Include="EntityFramework\PhieuPhatHanh.cs" />
+    <Compile Include="EntityFramework\PhieuThu.cs" />
+    <Compile Include="EntityFramework\Seed\FakeData.cs" />
     <Compile Include="EntityFramework\VeSoDbContext.cs" />
     <Compile Include="Migrations\201810091719041_Initial_Datbase.cs" />
     <Compile Include="Migrations\201810091719041_Initial_Datbase.Designer.cs">
       <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PhieuPhatHanh.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\QuanLyVeSo.Data.csproj.GenerateResource.Cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810091719041_Initial_Datbase.resx">
       <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\QuanLyVeSo.Data.Migrations.Initial_Datbase.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\QuanLyVeSo.Data.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

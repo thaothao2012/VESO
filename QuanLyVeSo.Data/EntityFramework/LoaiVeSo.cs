@@ -6,14 +6,15 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class LoaiVeSo
     {
-        public int ID { get; set; }
+        [Column(TypeName ="varchar")]
+        [StringLength(15)]
+        [Key]
+        public string MaLoaiVeSo { get; set; }
 
-        [Index("MaLoaiVeSoIndex", IsUnique = true)]
-        [Column(TypeName ="nvarchar")]
-        [StringLength(20)]
-        public string Ma { get; set; }
-
-        public string TinhThanh { get; set; }
+        [Column(TypeName = "nvarchar")]
+        [StringLength(50)]
+        [Required]
+        public string TenTinhThanh { get; set; }
 
         public int Gia { get; set; }
 

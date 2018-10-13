@@ -6,12 +6,14 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class GiaVeSo
     {
-        public int ID { get; set; }
+        public int MaGia { get; set; }
 
         public int Gia { get; set; }
 
+        [Column(TypeName ="date")]
         public DateTime NgayBatDau { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime NgayKetThuc { get; set; }
 
         public int TrangThai { get; set; }

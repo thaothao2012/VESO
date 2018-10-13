@@ -6,18 +6,28 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class CongNo
     {
-        public int ID { get; set; }
+        
+        [Key]
+        public int MaCongNo { get; set; }
 
-        public int DaiLyId { get; set; }
+
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
+        public string MaDaiLy { get; set; }
 
         public int SoTienBan { get; set; }
 
         public float HoaHong { get; set; }
 
+
+        [Column(TypeName = "date")]
         public DateTime NgayNo { get; set; }
 
         public int SoTienNo { get; set; }
 
-
+        public CongNo()
+        {
+            this.HoaHong = 0.1F;
+        }
     }
 }
