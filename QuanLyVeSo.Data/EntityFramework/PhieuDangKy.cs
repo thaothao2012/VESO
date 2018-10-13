@@ -13,6 +13,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         [Column(TypeName = "varchar")]
         [StringLength(15)]
+        [ForeignKey("DaiLy")]
         public string MaDaiLy { get; set; }
 
         
@@ -21,6 +22,6 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         public int TongSoLuongDangKy { get; set; }
 
-
+        public DaiLy DaiLy { get; set; }
     }
 }

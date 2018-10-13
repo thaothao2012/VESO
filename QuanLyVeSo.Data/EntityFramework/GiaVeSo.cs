@@ -6,6 +6,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class GiaVeSo
     {
+        [Key]
         public int MaGia { get; set; }
 
         public int Gia { get; set; }

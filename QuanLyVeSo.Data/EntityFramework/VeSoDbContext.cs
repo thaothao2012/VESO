@@ -31,6 +31,7 @@ namespace QuanLyVeSo.Data.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
         }
     }
 }

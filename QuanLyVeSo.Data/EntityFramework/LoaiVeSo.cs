@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,7 +7,7 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class LoaiVeSo
     {
-        [Column(TypeName ="varchar")]
+        [Column(TypeName = "varchar")]
         [StringLength(15)]
         [Key]
         public string MaLoaiVeSo { get; set; }
@@ -19,5 +20,9 @@ namespace QuanLyVeSo.Data.EntityFramework
         public int Gia { get; set; }
 
         public DateTime NgayXo { get; set; }
+
+        public ICollection<PhieuPhatHanh> PhieuPhatHanhs { get; set; }
+
+        public ICollection<KetQuaXoSo> KetQuaXoSos { get; set; }
     }
 }

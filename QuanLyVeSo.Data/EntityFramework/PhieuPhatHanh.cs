@@ -11,11 +11,10 @@ namespace QuanLyVeSo.Data.EntityFramework
         [Key]
         public string MaPhieuPhatHanh { get; set; }
 
-
         [Column(TypeName = "varchar")]
         [StringLength(15)]
+        [ForeignKey("DaiLy")]
         public string MaDaiLy { get; set; }
-
 
 
         [Column(TypeName = "date")]
@@ -23,8 +22,12 @@ namespace QuanLyVeSo.Data.EntityFramework
         public DateTime NgayPhatHanh { get; set; }
 
 
+
         [Required]
         public int TongSoLuongPhat { get; set; }
 
+
+
+        public DaiLy DaiLy { get; set; }
     }
 }

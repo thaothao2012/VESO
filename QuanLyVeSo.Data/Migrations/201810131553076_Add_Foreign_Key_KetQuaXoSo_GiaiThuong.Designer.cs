@@ -7,13 +7,13 @@ namespace QuanLyVeSo.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial_Datbase : IMigrationMetadata
+    public sealed partial class Add_Foreign_Key_KetQuaXoSo_GiaiThuong : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial_Datbase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Foreign_Key_KetQuaXoSo_GiaiThuong));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810091719041_Initial_Datbase"; }
+            get { return "201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong"; }
         }
         
         string IMigrationMetadata.Source

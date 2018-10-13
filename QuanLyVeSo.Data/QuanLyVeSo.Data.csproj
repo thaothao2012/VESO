@@ -59,11 +59,14 @@
     <Compile Include="EntityFramework\PhieuDangKy.cs" />
     <Compile Include="EntityFramework\PhieuPhatHanh.cs" />
     <Compile Include="EntityFramework\PhieuThu.cs" />
-    <Compile Include="EntityFramework\Seed\FakeData.cs" />
     <Compile Include="EntityFramework\VeSoDbContext.cs" />
-    <Compile Include="Migrations\201810091719041_Initial_Datbase.cs" />
-    <Compile Include="Migrations\201810091719041_Initial_Datbase.Designer.cs">
-      <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
+    <Compile Include="Migrations\201810131547017_Initial_Database.cs" />
+    <Compile Include="Migrations\201810131547017_Initial_Database.Designer.cs">
+      <DependentUpon>201810131547017_Initial_Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong.cs" />
+    <Compile Include="Migrations\201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong.Designer.cs">
+      <DependentUpon>201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +76,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810091719041_Initial_Datbase.resx">
-      <DependentUpon>201810091719041_Initial_Datbase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810131547017_Initial_Database.resx">
+      <DependentUpon>201810131547017_Initial_Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong.resx">
+      <DependentUpon>201810131553076_Add_Foreign_Key_KetQuaXoSo_GiaiThuong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
