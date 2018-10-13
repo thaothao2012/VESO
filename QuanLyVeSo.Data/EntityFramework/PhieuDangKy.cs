@@ -6,8 +6,10 @@ namespace QuanLyVeSo.Data.EntityFramework
 {
     public class PhieuDangKy
     {
+        [Column(TypeName = "varchar")]
+        [StringLength(15)]
         [Key]
-        public int MaPhieuDangKy { get; set; }
+        public string MaPhieuDangKy { get; set; }
 
         [Column(TypeName = "varchar")]
         [StringLength(15)]
@@ -17,7 +19,7 @@ namespace QuanLyVeSo.Data.EntityFramework
         [Column(TypeName = "date")]
         public DateTime NgayDangKy { get; set; }
 
-        public int SoLuongDangKy { get; set; }
+        public int TongSoLuongDangKy { get; set; }
 
 
     }
