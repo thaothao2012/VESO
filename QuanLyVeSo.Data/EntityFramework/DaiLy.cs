@@ -14,7 +14,8 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         [Column(TypeName = "nvarchar")]
         [StringLength(100)]
-        [Required]
+        [Required(ErrorMessage ="Tên đại lý không được rỗng")]
+        [Display(Name ="Tên đại lý")]
         public string TenDaiLy { get; set; }
 
         [Column(TypeName = "nvarchar")]

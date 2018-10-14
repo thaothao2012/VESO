@@ -11,14 +11,12 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         public int Gia { get; set; }
 
-        [Column(TypeName ="date")]
+        [Column(TypeName = "date")]
         public DateTime NgayBatDau { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime NgayKetThuc { get; set; }
 
         public int TrangThai { get; set; }
-
-
     }
 }
