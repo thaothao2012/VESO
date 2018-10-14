@@ -62,6 +62,11 @@ namespace QuanLyVeSo.Data.Dao
             return entity.TrangThai;
         }
 
+        public IEnumerable<DaiLy> AllDaiLys()
+        {
+            return  db.DaiLy;
+        }
+
         #endregion Methods
     }
 }

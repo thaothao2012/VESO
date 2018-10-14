@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\DaiLyDao.cs" />
+    <Compile Include="Dao\PhieuThuDao.cs" />
     <Compile Include="EntityFramework\ChiTietPhieuDangKy.cs" />
     <Compile Include="EntityFramework\ChiTietPhieuPhatHanh.cs" />
     <Compile Include="EntityFramework\CongNo.cs" />
