@@ -47,6 +47,8 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
         }
 
 
+
+
         public JsonResult ChangeStatus(string madaily)
         {
             var result = DaiLyDao.Instance.ChangeStatus(madaily);

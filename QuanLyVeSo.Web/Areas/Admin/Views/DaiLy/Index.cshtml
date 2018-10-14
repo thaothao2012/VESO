@@ -31,6 +31,7 @@
                     </div>
                 </div>
             }
+            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover table-bordered">
@@ -56,7 +57,7 @@
                             <td>
                                 @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaDaiLy }) |
                                 @Html.ActionLink("Sửa", "Edit", new { ID = item.MaDaiLy }) |
-                                @Ajax.ActionLink("Xóa", "Delete", "Content", new { id = item.MaDaiLy }, new AjaxOptions
+                                @Ajax.ActionLink("Xóa", "Delete", "DaiLy", new { id = item.MaDaiLy }, new AjaxOptions
                                 {
                                     HttpMethod = "Delete",
                                     Confirm = "Bạn muốn xóa bài viết này?",

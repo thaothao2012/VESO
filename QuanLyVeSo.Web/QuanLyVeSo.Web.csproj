@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CongNoController.cs" />
     <Compile Include="Areas\Admin\Controllers\DaiLyController.cs" />
     <Compile Include="Areas\Admin\Controllers\GiaVeSoController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -16048,6 +16049,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Areas\Admin\Views\GiaVeSo\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GiaVeSo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CongNo\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
