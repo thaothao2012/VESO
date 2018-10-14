@@ -21,7 +21,9 @@ namespace QuanLyVeSo.Data.EntityFramework
 
         public DateTime NgayXo { get; set; }
 
-        public ICollection<PhieuPhatHanh> PhieuPhatHanhs { get; set; }
+        public ICollection<ChiTietPhieuPhatHanh> ChiTietPhieuPhatHanhs { get; set; }
+
+        public ICollection<ChiTietPhieuDangKy> ChiTietPhieuDangKys { get; set; }
 
         public ICollection<KetQuaXoSo> KetQuaXoSos { get; set; }
     }

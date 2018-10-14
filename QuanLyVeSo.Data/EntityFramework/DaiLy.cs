@@ -4,12 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyVeSo.Data.EntityFramework
 {
-    public enum TrangThai
-    {
-        HoatDong,
-        TamDung
-    }
-
     public class DaiLy
     {
         [Column(TypeName = "varchar")]
@@ -38,7 +32,7 @@ namespace QuanLyVeSo.Data.EntityFramework
         public string Email { get; set; }
 
         [Required]
-        public TrangThai TrangThai { get; set; }
+        public bool TrangThai { get; set; }
 
         public ICollection<CongNo> CongNos { get; set; }
 

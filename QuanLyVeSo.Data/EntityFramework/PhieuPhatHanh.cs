@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,20 +17,15 @@ namespace QuanLyVeSo.Data.EntityFramework
         [ForeignKey("DaiLy")]
         public string MaDaiLy { get; set; }
 
-
         [Column(TypeName = "date")]
         [Required]
         public DateTime NgayPhatHanh { get; set; }
 
-
-
         [Required]
         public int TongSoLuongPhat { get; set; }
 
-
-
         public DaiLy DaiLy { get; set; }
-        public ICollection<ChiTietPhieuPhatHanh> ChiTietPhieuPhatHanhs { get; set; }
 
+        public ICollection<ChiTietPhieuPhatHanh> ChiTietPhieuPhatHanhs { get; set; }
     }
 }

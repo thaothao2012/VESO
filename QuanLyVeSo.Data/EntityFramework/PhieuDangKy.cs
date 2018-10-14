@@ -10,6 +10,7 @@ namespace QuanLyVeSo.Data.EntityFramework
         [Column(TypeName = "varchar")]
         [StringLength(15)]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string MaPhieuDangKy { get; set; }
 
         [Column(TypeName = "varchar")]
@@ -17,13 +18,13 @@ namespace QuanLyVeSo.Data.EntityFramework
         [ForeignKey("DaiLy")]
         public string MaDaiLy { get; set; }
 
-        
         [Column(TypeName = "date")]
         public DateTime NgayDangKy { get; set; }
 
         public int TongSoLuongDangKy { get; set; }
 
         public DaiLy DaiLy { get; set; }
+
         public ICollection<ChiTietPhieuDangKy> ChiTietPhieuDangKys { get; set; }
     }
 }
