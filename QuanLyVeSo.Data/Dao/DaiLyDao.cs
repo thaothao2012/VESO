@@ -36,9 +36,39 @@ namespace QuanLyVeSo.Data.Dao
 
         public bool Create(DaiLy entity)
         {
-            var daiLy = db.DaiLy.Add(entity);
-            db.SaveChanges();
-            return daiLy != null;
+            try
+            {
+                db.DaiLy.Add(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Update(DaiLy entity)
+        {
+            try
+            {
+                var model = GetSingle(entity.MaDaiLy);
+
+                model.SoDienThoai = entity.SoDienThoai;
+                model.TenDaiLy = entity.TenDaiLy;
+                model.TrangThai = entity.TrangThai;
+                model.DiaChi = entity.DiaChi;
+                model.Email = entity.Email;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
@@ -53,13 +83,33 @@ namespace QuanLyVeSo.Data.Dao
             return model.OrderBy(p => p.MaDaiLy).ToPagedList(pageNumber, pageSize);
         }
 
+        public DaiLy GetSingle(string id)
+        {
+            return db.DaiLy.FirstOrDefault(p => p.MaDaiLy == id);
+        }
+
         public bool ChangeStatus(string maDaiLy)
         {
-            var entity = db.DaiLy.FirstOrDefault(p  => p.MaDaiLy == maDaiLy);
+            var entity = db.DaiLy.FirstOrDefault(p => p.MaDaiLy == maDaiLy);
             entity.TrangThai = !entity.TrangThai;
             db.SaveChanges();
 
             return entity.TrangThai;
+        }
+
+        public bool Delete(string maDaiLy)
+        {
+            try
+            {
+                var entity = GetSingle(maDaiLy);
+                db.DaiLy.Remove(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
 
         #endregion Methods
