@@ -3,5 +3,11 @@
   "name": "asp.net",
   "private": true,
   "devDependencies": {
+    "bootbox.js": "4.3.0",
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0",
+    "ionicons": "2.0.1",
+    "jquery": "3.2.1",
+    "fastclick": "1.0.6"
   }
 }

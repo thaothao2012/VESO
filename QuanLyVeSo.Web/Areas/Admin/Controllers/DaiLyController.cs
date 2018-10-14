@@ -7,7 +7,7 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
     public class DaiLyController : Controller
     {
         // GET: Admin/DaiLy
-        public ActionResult Index(int? page,string query,string currentFilter)
+        public ActionResult Index(int? page, string query, string currentFilter)
         {
             if (query != null)
             {
@@ -47,12 +47,47 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
         }
 
 
-
-
-        public JsonResult ChangeStatus(string madaily)
+        public ActionResult Detail(string id)
         {
-            var result = DaiLyDao.Instance.ChangeStatus(madaily);
+            var model = DaiLyDao.Instance.GetSingle(id);
+            return View(model);
+        }
+
+
+        public JsonResult ChangeStatus(string id)
+        {
+            var result = DaiLyDao.Instance.ChangeStatus(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult Delete(string id)
+        {
+            var result = DaiLyDao.Instance.Delete(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var model = DaiLyDao.Instance.GetSingle(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(DaiLy model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (DaiLyDao.Instance.Update(model))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật đại lý không thành công");
+                }
+            }
+            return View(model);
+        }
+
     }
 }

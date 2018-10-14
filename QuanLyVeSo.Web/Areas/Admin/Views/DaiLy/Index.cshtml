@@ -1,11 +1,21 @@
 ﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.DaiLy>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Đại lý";
 }
 
 @section header{
-    Quản lý đại lý
+    <h1>Quản lý đại lý</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/DaiLy">Đại lý</a></li>
+        <li class="active">Danh sách</li>
+    </ol>
+}
+
+@section scripts{
+    <script src="~/Assets/Admin/js/controller/dailycontroller.js"></script>
 }
 
 <div class="row">
@@ -31,7 +41,7 @@
                     </div>
                 </div>
             }
-            
+
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover table-bordered">
@@ -45,24 +55,18 @@
                     </tr>
                     @foreach (var item in Model)
                     {
-                        <tr id="row_@item.MaDaiLy" class="">
+                        <tr id="row_@item.MaDaiLy">
                             <td>@item.MaDaiLy</td>
                             <td>@item.TenDaiLy</td>
                             <td>@item.DiaChi</td>
                             <td>@item.SoDienThoai</td>
                             <td>
-                                @Html.ActionLink((@item.TrangThai == true ? "Kích hoạt" : "Khóa"), "ChangeStatus", "DaiLy", new { maDaiLy = @item.MaDaiLy }, new { @class = (@item.TrangThai == true ? "btnchangestatus label label-success" : "btnchangestatus label label-danger"), @data_id = @item.MaDaiLy })
+                                <a href="#" data-id="@item.MaDaiLy" class="@(item.TrangThai == true? "btn-change-status label label-success" : "btn-change-status label label-danger")">@(item.TrangThai ? "Kích hoạt" : "Khóa")</a>
                             </td>
 
                             <td>
                                 @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaDaiLy }) |
-                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaDaiLy }) |
-                                @Ajax.ActionLink("Xóa", "Delete", "DaiLy", new { id = item.MaDaiLy }, new AjaxOptions
-                                {
-                                    HttpMethod = "Delete",
-                                    Confirm = "Bạn muốn xóa bài viết này?",
-                                    OnSuccess = "$('#row_" + @item.MaDaiLy + "').remove()",
-                                })
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaDaiLy }) |                      <a href="#" data-id="@item.MaDaiLy" class="btn-delete">Xóa</a>
                             </td>
                         </tr>
                     }
