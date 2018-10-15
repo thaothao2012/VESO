@@ -1,0 +1,55 @@
+﻿@model QuanLyVeSo.Data.EntityFramework.GiaiThuong
+
+@{
+    ViewBag.Title = "Cập nhật giải thưởng";
+}
+
+@section header{
+    <h1>Cập nhật giải thưởng</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/GiaiThuong">Giải thưởng</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6 col-md-offset-2">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin giải thưởng</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Edit", "GiaiThuong", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="box-body">
+
+                    @Html.HiddenFor(model => model.MaGiaiThuong)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenGiai)
+                        @Html.TextBoxFor(model => model.TenGiai, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TenGiai, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TienThuong)
+                        @Html.TextBoxFor(model => model.TienThuong, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TienThuong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    @Html.ActionLink("Hủy", "Index", new object { }, new { @class = "btn btn-default col-md-offset-1" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

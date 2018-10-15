@@ -6,25 +6,25 @@ using System.Linq;
 
 namespace QuanLyVeSo.Data.Dao
 {
-    public class DaiLyDao
+    public class GiaVeSoDao
     {
         #region Singleton
 
-        private static DaiLyDao instance;
+        private static GiaVeSoDao instance;
         private readonly VeSoDbContext db = null;
 
-        private DaiLyDao()
+        private GiaVeSoDao()
         {
             db = new VeSoDbContext();
         }
 
-        public static DaiLyDao Instance
+        public static GiaVeSoDao Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new DaiLyDao();
+                    instance = new GiaVeSoDao();
                 }
                 return instance;
             }
@@ -34,11 +34,11 @@ namespace QuanLyVeSo.Data.Dao
 
         #region Methods
 
-        public bool Create(DaiLy entity)
+        public bool Create(GiaVeSo entity)
         {
             try
             {
-                db.DaiLy.Add(entity);
+                db.GiaVeSo.Add(entity);
                 db.SaveChanges();
             }
             catch (Exception)
@@ -49,17 +49,16 @@ namespace QuanLyVeSo.Data.Dao
             return true;
         }
 
-        public bool Update(DaiLy entity)
+        public bool Update(GiaVeSo entity)
         {
             try
             {
-                var model = GetSingle(entity.MaDaiLy);
+                var model = GetSingle(entity.MaGia);
 
-                model.SoDienThoai = entity.SoDienThoai;
-                model.TenDaiLy = entity.TenDaiLy;
+                model.Gia = entity.Gia;
+                model.NgayBatDau = entity.NgayBatDau;
+                model.NgayKetThuc = entity.NgayKetThuc;
                 model.TrangThai = entity.TrangThai;
-                model.DiaChi = entity.DiaChi;
-                model.Email = entity.Email;
 
                 db.SaveChanges();
             }
@@ -71,38 +70,32 @@ namespace QuanLyVeSo.Data.Dao
             return true;
         }
 
-        public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
+        public IEnumerable<GiaVeSo> ListPaged(int pageNumber, string query, int pageSize = 2)
         {
-            var model = from c in db.DaiLy select c;
-            if (!string.IsNullOrEmpty(query))
-            {
-                model = model.Where(p => p.TenDaiLy.ToLower().Contains(query.ToLower())
-                                        || p.MaDaiLy.ToLower().Contains(query.ToLower()));
-            }
-
-            return model.OrderBy(p => p.MaDaiLy).ToPagedList(pageNumber, pageSize);
+            var model = from c in db.GiaVeSo select c;
+            return model.OrderBy(p => p.MaGia).ToPagedList(pageNumber, pageSize);
         }
 
-        public DaiLy GetSingle(string id)
+        public GiaVeSo GetSingle(int id)
         {
-            return db.DaiLy.FirstOrDefault(p => p.MaDaiLy == id);
+            return db.GiaVeSo.FirstOrDefault(p => p.MaGia == id);
         }
 
-        public bool ChangeStatus(string maDaiLy)
+        public bool ChangeStatus(int maGia)
         {
-            var entity = db.DaiLy.FirstOrDefault(p => p.MaDaiLy == maDaiLy);
+            var entity = db.GiaVeSo.FirstOrDefault(p => p.MaGia == maGia);
             entity.TrangThai = !entity.TrangThai;
             db.SaveChanges();
 
             return entity.TrangThai;
         }
 
-        public bool Delete(string maDaiLy)
+        public bool Delete(int maGia)
         {
             try
             {
-                var entity = GetSingle(maDaiLy);
-                db.DaiLy.Remove(entity);
+                var entity = GetSingle(maGia);
+                db.GiaVeSo.Remove(entity);
                 db.SaveChanges();
             }
             catch (Exception)
@@ -113,5 +106,6 @@ namespace QuanLyVeSo.Data.Dao
         }
 
         #endregion Methods
+
     }
 }
