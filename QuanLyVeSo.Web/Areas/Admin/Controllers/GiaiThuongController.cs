@@ -4,9 +4,10 @@ using System.Web.Mvc;
 
 namespace QuanLyVeSo.Web.Areas.Admin.Controllers
 {
-    public class GiaVeSoController : Controller
+    public class GiaiThuongController : Controller
     {
-        // GET: Admin/GiaVeSo
+
+        // GET: Admin/GiaiThuong
         public ActionResult Index(int? page, string query, string currentFilter)
         {
             if (query != null)
@@ -20,7 +21,7 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
 
             ViewBag.CurrentFilter = query;
             var pageNumber = page ?? 1;
-            var model = GiaVeSoDao.Instance.ListPaged(pageNumber, query);
+            var model = GiaiThuongDao.Instance.ListPaged(pageNumber, query);
             return View(model);
         }
 
@@ -30,54 +31,47 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(GiaVeSo entity)
+        public ActionResult Create(GiaiThuong entity)
         {
             if (ModelState.IsValid)
             {
-                if (GiaVeSoDao.Instance.Create(entity))
+                if (GiaiThuongDao.Instance.Create(entity))
                 {
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm mới giá vé không thành công");
+                    ModelState.AddModelError("", "Thêm mới đại lý không thành công");
                 }
             }
             return View();
         }
 
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(string id)
         {
-            var model = GiaVeSoDao.Instance.GetSingle(id);
+            var model = GiaiThuongDao.Instance.GetSingle(id);
             return View(model);
         }
 
-
-        public JsonResult ChangeStatus(int id)
+        public JsonResult Delete(string id)
         {
-            var result = GiaVeSoDao.Instance.ChangeStatus(id);
+            var result = GiaiThuongDao.Instance.Delete(id);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Delete(int id)
+        public ActionResult Edit(string id)
         {
-            var result = GiaVeSoDao.Instance.Delete(id);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Edit(int id)
-        {
-            var model = GiaVeSoDao.Instance.GetSingle(id);
+            var model = GiaiThuongDao.Instance.GetSingle(id);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(GiaVeSo model)
+        public ActionResult Edit(GiaiThuong model)
         {
             if (ModelState.IsValid)
             {
-                if (GiaVeSoDao.Instance.Update(model))
+                if (GiaiThuongDao.Instance.Update(model))
                 {
                     return RedirectToAction("Index");
                 }
@@ -88,6 +82,7 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
             }
             return View(model);
         }
+
 
     }
 }

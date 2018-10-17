@@ -1,16 +1,15 @@
 ﻿@model QuanLyVeSo.Data.EntityFramework.CongNo
 
 @{
-    ViewBag.Title = "Thêm mới công nợ";
+    ViewBag.Title = "Cập nhật công nợ";
 }
-
 @section header{
-<h1>Thêm mới công nợ</h1>
-<ol class="breadcrumb">
-    <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-    <li><a href="/Admin/CongNo">Công Nợ</a></li>
-    <li class="active">Thêm mới</li>
-</ol>
+    <h1>Cập nhật công nợ</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/CongNo">Công Nợ</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
 }
 
 <div class="row">
@@ -19,20 +18,17 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Thông tin bài viết</h3>
+                <h3 class="box-title">Thông tin đại lý</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            @using (Html.BeginForm("Create", "CongNo", FormMethod.Post))
+            @using (Html.BeginForm("Edit", "CongNo", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="box-body">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.MaCongNo)
-                        @Html.TextBoxFor(model => model.MaCongNo, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.MaCongNo, "", new { @class = "text-danger" })
-                    </div>
+
+                    @Html.HiddenFor(model => model.MaCongNo)
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.MaDaiLy)
@@ -63,6 +59,7 @@
                         @Html.TextBoxFor(model => model.SoTienNo, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.SoTienNo, "", new { @class = "text-danger" })
                     </div>
+                
                 </div>
 
                 <!-- /.box-body -->

@@ -1,30 +1,30 @@
-﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.GiaVeSo>
+﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.CongNo>
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Giá Vé";
+    ViewBag.Title = "Công Nợ";
 }
 
 @section header{
-    <h1>Quản lý giá vé</h1>
+    <h1>Quản lý công nợ</h1>
     <ol class="breadcrumb">
         <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li><a href="/Admin/GiaVeSo">Giá vé số</a></li>
+        <li><a href="/Admin/CongNo">Công Nợ</a></li>
         <li class="active">Danh sách</li>
     </ol>
 }
-
 @section scripts{
-    <script src="~/Assets/Admin/js/controller/giavesocontroller.js"></script>
+    <script src="~/Assets/Admin/js/controller/congnocontroller.js"></script>
 }
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            @using (Html.BeginForm("Index", "GiaVeSo", FormMethod.Get))
+
+            @using (Html.BeginForm("Index", "CongNo", FormMethod.Get))
             {
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách giá vé</h3>
+                    <h3 class="box-title">Danh sách công nợ</h3>
 
                     <div class="box-tools pull-right">
 
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="pull-right">
-                            <a href="/Admin/GiaVeSo/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
+                            <a href="/Admin/CongNo/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                 </div>
@@ -46,27 +46,26 @@
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã giá</th>
-                        <th>Giá</th>
-                        <th>Ngày bắt đầu</th>
-                        <th>Ngày kết thúc</th>
-                        <th>Trạng thái</th>
+                        <th>Mã công nợ</th>
+                        <th>Mã đại lý</th>
+                        <th>Số tiền bán</th>
+                        <th>Hoa hồng</th>
+                        <th>Ngày nợ</th>
+                        <th>Số tiền nợ</th>
                         <th>Chức năng</th>
                     </tr>
                     @foreach (var item in Model)
                     {
-                        <tr id="row_@item.MaGia">
-                            <td>@item.Gia</td>
-                            <td>@item.NgayBatDau</td>
-                            <td>@item.NgayKetThuc</td>
-                            
+                        <tr id="row_@item.MaCongNo">
+                            <td>@item.MaCongNo</td>
+                            <td>@item.MaDaiLy</td>
+                            <td>@item.SoTienBan</td>
+                            <td>@item.HoaHong</td>
+                            <td>@item.NgayNo</td>
+                            <td>@item.SoTienNo</td>
                             <td>
-                                <a href="#" data-id="@item.MaGia" class="@(item.TrangThai == true? "btn-change-status label label-success" : "btn-change-status label label-danger")">@(item.TrangThai ? "Kích hoạt" : "Khóa")</a>
-                            </td>
-
-                            <td>
-                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaGia }) |
-                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaGia }) |                      <a href="#" data-id="@item.MaGia" class="btn-delete">Xóa</a>
+                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaCongNo }) |
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaCongNo }) |                      <a href="#" data-id="@item.MaCongNo" class="btn-delete">Xóa</a>
                             </td>
                         </tr>
                     }
@@ -74,6 +73,12 @@
             </div>
             <!-- /.box-body -->
             <!-- /.box-footer -->
+
+
+
+
+
+
         </div>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount

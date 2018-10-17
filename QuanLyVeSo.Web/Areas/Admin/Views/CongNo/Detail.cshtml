@@ -1,0 +1,65 @@
+﻿@model QuanLyVeSo.Data.EntityFramework.CongNo
+
+@{
+    ViewBag.Title = "Thông tin công nợ";
+}
+@section header{
+    <h1>Thông tin công nợ</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/CongNo">Công Nợ</a></li>
+        <li class="active">Chi tiết</li>
+    </ol>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6 col-md-offset-2">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin bài viết</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaCongNo)
+                    @Html.TextBoxFor(model => model.MaCongNo, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaDaiLy)
+                    @Html.TextBoxFor(model => model.MaDaiLy, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoTienBan)
+                    @Html.TextBoxFor(model => model.SoTienBan, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HoaHong)
+                    @Html.TextBoxFor(model => model.HoaHong, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayNo)
+                    @Html.TextBoxFor(model => model.NgayNo, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoTienNo)
+                    @Html.TextBoxFor(model => model.SoTienNo, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+            </div>
+
+            <!-- /.box-body -->
+            <div class="box-footer">
+                @Html.ActionLink("Về trang chủ", "Index", new object { }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>

@@ -41,7 +41,7 @@ namespace QuanLyVeSo.Data.Dao
                 db.DaiLy.Add(entity);
                 db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -63,7 +63,7 @@ namespace QuanLyVeSo.Data.Dao
 
                 db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -113,6 +113,21 @@ namespace QuanLyVeSo.Data.Dao
             db.SaveChanges();
 
             return entity.TrangThai;
+        }
+
+        public bool Delete(string maDaiLy)
+        {
+            try
+            {
+                var entity = GetSingle(maDaiLy);
+                db.DaiLy.Remove(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
         }
 
         #endregion Methods

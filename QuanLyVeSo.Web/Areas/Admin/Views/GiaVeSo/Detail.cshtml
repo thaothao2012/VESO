@@ -1,0 +1,65 @@
+﻿@model QuanLyVeSo.Data.EntityFramework.GiaVeSo
+
+@{
+    ViewBag.Title = "Thông tin giá vé";
+}
+
+@section header{
+    <h1>Thông tin giá vé</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/GiaVeSo">Giá vé số</a></li>
+        <li class="active">Chi tiết</li>
+    </ol>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6 col-md-offset-2">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin bài viết</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaGia)
+                    @Html.TextBoxFor(model => model.MaGia, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gia)
+                    @Html.TextBoxFor(model => model.Gia, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayBatDau)
+                    @Html.TextBoxFor(model => model.NgayBatDau, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayKetThuc)
+                    @Html.TextBoxFor(model => model.NgayKetThuc, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TrangThai)
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.TrangThai, new { @disabled = "disabled" })
+                            Kích hoạt
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.box-body -->
+            <div class="box-footer">
+                @Html.ActionLink("Về trang chủ", "Index", new object { }, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>
