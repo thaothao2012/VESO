@@ -1,0 +1,137 @@
+﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.PhieuDangKy>
+
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Phiếu đăng ký";
+}
+
+@section header{
+    Quản lý phiếu đăng ký
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            @using (Html.BeginForm("Index", "PhieuDangKy", FormMethod.Get))
+            {
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách phiếu đăng ký</h3>
+
+                    <div class="box-tools pull-right">
+
+                        <div class="input-group input-group-sm col-md-4 pull-right col-xs-offset-1">
+                            @Html.TextBox("query", ViewBag.CurrentFilter as string, new { @class = "form-control pull-right", @placeholder = "Tìm kiếm" })
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <a data-target="#myModal" data-toggle="modal" class="btn btn-info btn-sm" 
+                               href="#"> <i class="fa  fa-plus"></i>Thêm mới</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <th>Mã phiếu đăng ký</th>
+                        <th>Mã đại lý</th>
+                        <th>Ngày đăng ký</th>
+                        <th>Tổng số lượng đăng ký</th>
+                        <th>Chức năng</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="row_@item.MaPhieuDangKy" class="">
+                            <td>@item.MaDaiLy</td>
+                            <td>@item.NgayDangKy</td>
+                            <td>@item.TongSoLuongDangKy</td>
+                            <td>
+                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaPhieuDangKy }) |
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaPhieuDangKy }) |
+                                @Ajax.ActionLink("Xóa", "Delete", new { id = item.MaPhieuDangKy }, new AjaxOptions
+                           {
+                               HttpMethod = "Delete",
+                               Confirm = "Bạn muốn xóa bài viết này?",
+                               OnSuccess = "$('#row_" + @item.MaPhieuDangKy + "').remove()",
+                           })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount
+    </div>
+    <!-- /.box -->
+    <!--Modals-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Thêm mới phiếu đăng ký</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-xs-4">
+                            @Html.Label("Chọn tỉnh/đài", new { @class = "control-label" })
+                            @Html.DropDownList("DanhSachTinh", null, new { @class = "form-control" })
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.Label("Số lượng", new { @class = "control-label" })
+                            @Html.TextBox("Name", "", new { @class = "form-control" })
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.Label("Lưu lựa chọn", new { @class = "control-label invisible"  })
+                            <button type="button" class="btn btn-primary col-xs-11" data-dismiss="modal">Lưu</button>
+                        </div>
+                        
+                        <div><h3>Danh sách đã lưu</h3></div>
+                        <table class="col-xs-12 table-hover table-bordered">
+                            
+                           
+                            <thead>
+                                <tr>
+                                    <td>@Html.Label("STT", new { @class = "control-label" })</td>
+                                    <td>@Html.Label("Tên tỉnh", new { @class = "control-label" })</td>
+                                    <td>@Html.Label("Số lượng đăng ký", new { @class = "control-label" })</td>
+                                    <td>@Html.Label("Chức năng", new { @class = "control-label" })</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table">
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Lưu đăng ký</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

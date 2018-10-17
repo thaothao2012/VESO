@@ -1,12 +1,16 @@
 ﻿using QuanLyVeSo.Data.Dao;
 using QuanLyVeSo.Data.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace QuanLyVeSo.Web.Areas.Admin.Controllers
 {
-    public class DaiLyController : Controller
+    public class PhieuPhatHanhController : Controller
     {
-        // GET: Admin/DaiLy
+        // GET: Admin/PhieuPhatHanh
         public ActionResult Index(int? page, string query, string currentFilter)
         {
             if (query != null)
@@ -20,74 +24,54 @@ namespace QuanLyVeSo.Web.Areas.Admin.Controllers
 
             ViewBag.CurrentFilter = query;
             var pageNumber = page ?? 1;
-            var model = DaiLyDao.Instance.ListPaged(pageNumber, query);
+            var model = PhieuPhatHanhDao.Instance.ListPaged(pageNumber, query);
             return View(model);
         }
-
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
-        public ActionResult Create(DaiLy entity)
+        public ActionResult Create(PhieuPhatHanh entity)
         {
             if (ModelState.IsValid)
             {
-                if (DaiLyDao.Instance.Create(entity))
+                if (PhieuPhatHanhDao.Instance.Create(entity))
                 {
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm mới đại lý không thành công");
+                    ModelState.AddModelError("", "Thêm mới phiếu phát hành không thành công");
                 }
             }
             return View();
         }
-
-
         public ActionResult Detail(string id)
         {
             var model = DaiLyDao.Instance.GetSingle(id);
             return View(model);
         }
-
-
-        public JsonResult ChangeStatus(string id)
-        {
-            var result = DaiLyDao.Instance.ChangeStatus(id);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Delete(string id)
-        {
-            var result = DaiLyDao.Instance.Delete(id);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult Edit(string id)
         {
-            var model = DaiLyDao.Instance.GetSingle(id);
-            return View(model);
+            var entity = PhieuPhatHanhDao.Instance.GetSingle(id);
+            return View(entity);
         }
-
         [HttpPost]
-        public ActionResult Edit(DaiLy model)
+        public ActionResult Edit(PhieuPhatHanh entity)
         {
             if (ModelState.IsValid)
             {
-                if (DaiLyDao.Instance.Update(model))
+                if (PhieuPhatHanhDao.Instance.Update(entity))
                 {
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhật đại lý không thành công");
+                    ModelState.AddModelError("", "Cập nhật phiếu phát hành không thành công");
                 }
             }
-            return View(model);
+            return View(entity);
         }
-
     }
 }

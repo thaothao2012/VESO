@@ -38,11 +38,7 @@ namespace QuanLyVeSo.Data.Dao
             db.SaveChanges();
             return phieuThu != null;
         }
-        public bool Edit(int id)
-        {
-            var entity = db.PhieuThu.SingleOrDefault(e => e.MaPhieuThu == id);
-            return true;
-        }
+
         public IEnumerable<PhieuThu> ListPaged(int pageNumber, string query, int pageSize = 2)
         {
             var model = from c in db.PhieuThu select c;
@@ -52,6 +48,42 @@ namespace QuanLyVeSo.Data.Dao
             }
             return model.OrderBy(p => p.MaPhieuThu).ToPagedList(pageNumber, pageSize);
         }
-       
+        public bool Update(PhieuThu entity)
+        {
+            try
+            {
+                var model = GetSingle(entity.MaPhieuThu);
+                model.MaDaiLy = entity.MaDaiLy;
+                model.NgayThu = entity.NgayThu;
+                model.TienThu = entity.TienThu;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public PhieuThu GetSingle(int idPhieuThu)
+        {
+            return db.PhieuThu.FirstOrDefault(m => m.MaPhieuThu == idPhieuThu);
+        }
+        public  bool Delete(int id)
+        {
+            try
+            {
+                var model = GetSingle(id);
+                db.PhieuThu.Remove(model);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
     }
 }

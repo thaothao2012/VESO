@@ -36,11 +36,54 @@ namespace QuanLyVeSo.Data.Dao
 
         public bool Create(DaiLy entity)
         {
-            var daiLy = db.DaiLy.Add(entity);
-            db.SaveChanges();
-            return daiLy != null;
+            try
+            {
+                db.DaiLy.Add(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
+        public bool Update(DaiLy entity)
+        {
+            try
+            {
+                var model = GetSingle(entity.MaDaiLy);
+
+                model.SoDienThoai = entity.SoDienThoai;
+                model.TenDaiLy = entity.TenDaiLy;
+                model.TrangThai = entity.TrangThai;
+                model.DiaChi = entity.DiaChi;
+                model.Email = entity.Email;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public bool Delete(string maDaiLy)
+        {
+            try
+            {
+                var entity = GetSingle(maDaiLy);
+                db.DaiLy.Remove(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
         public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
         {
             var model = from c in db.DaiLy select c;
@@ -53,18 +96,23 @@ namespace QuanLyVeSo.Data.Dao
             return model.OrderBy(p => p.MaDaiLy).ToPagedList(pageNumber, pageSize);
         }
 
-        public bool ChangeStatus(string maDaiLy)
+        public DaiLy GetSingle(string id)
         {
-            var entity = db.DaiLy.FirstOrDefault(p  => p.MaDaiLy == maDaiLy);
-            entity.TrangThai = !entity.TrangThai;
-            db.SaveChanges();
-
-            return entity.TrangThai;
+            return db.DaiLy.FirstOrDefault(p => p.MaDaiLy == id);
         }
 
         public IEnumerable<DaiLy> AllDaiLys()
         {
-            return  db.DaiLy;
+            return db.DaiLy;
+        }
+
+        public bool ChangeStatus(string maDaiLy)
+        {
+            var entity = db.DaiLy.FirstOrDefault(p => p.MaDaiLy == maDaiLy);
+            entity.TrangThai = !entity.TrangThai;
+            db.SaveChanges();
+
+            return entity.TrangThai;
         }
 
         #endregion Methods

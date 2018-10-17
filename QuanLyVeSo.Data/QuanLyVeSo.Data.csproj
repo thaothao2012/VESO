@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\DaiLyDao.cs" />
+    <Compile Include="Dao\PhieuDangKyDao.cs" />
+    <Compile Include="Dao\PhieuPhatHanhDao.cs" />
     <Compile Include="Dao\PhieuThuDao.cs" />
     <Compile Include="EntityFramework\ChiTietPhieuDangKy.cs" />
     <Compile Include="EntityFramework\ChiTietPhieuPhatHanh.cs" />
@@ -83,9 +85,6 @@
     <EmbeddedResource Include="Migrations\201810140407598_Initial_Database.resx">
       <DependentUpon>201810140407598_Initial_Database.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

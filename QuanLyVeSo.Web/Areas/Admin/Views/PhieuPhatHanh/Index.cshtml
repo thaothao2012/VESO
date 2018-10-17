@@ -1,21 +1,20 @@
-﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.PhieuThu>
+﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.PhieuPhatHanh>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Phiếu thu";
+    ViewBag.Title = "Phiếu phát hành";
 }
 
 @section header{
-    Quản lý phiếu thu
+    Quản lý phiếu phát hành
 }
-    
-    
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            @using (Html.BeginForm("Index", "PhieuThu", FormMethod.Get))
+            @using (Html.BeginForm("Index", "PhieuPhatHanh", FormMethod.Get))
             {
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách phiếu thu</h3>
+                    <h3 class="box-title">Danh sách phiếu phát hành</h3>
 
                     <div class="box-tools pull-right">
 
@@ -27,7 +26,7 @@
                         </div>
 
                         <div class="pull-right">
-                            <a href="/Admin/PhieuThu/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
+                            <a href="/Admin/PhieuPhatHanh/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                 </div>
@@ -37,39 +36,35 @@
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Mã phiếu thu</th>
+                        <th>Mã phiếu phát hành</th>
                         <th>Mã đại lý</th>
-                        <th>Ngày thu</th>
-                        <th>Tiền thu</th>
+                        <th>Ngày phát hành</th>
+                        <th>Tổng số lượng</th>
                         <th>Chức năng</th>
                     </tr>
                     @foreach (var item in Model)
                     {
-                        <tr id="row_@item.MaPhieuThu" class="">
-                            <td>@item.MaPhieuThu</td>
+                        <tr id="row_@item.MaPhieuPhatHanh" class="">
                             <td>@item.MaDaiLy</td>
-                            <td>@item.NgayThu</td>
-                            <td>@item.TienThu</td>
+                            <td>@item.NgayPhatHanh</td>
+                            <td>@item.TongSoLuongPhat</td>
                             <td>
-                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaPhieuThu }) |
-                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaPhieuThu }) |
-                                @Ajax.ActionLink("Xóa", "Delete", new { id = item.MaPhieuThu }, new AjaxOptions
+                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaPhieuPhatHanh }) |
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaPhieuPhatHanh }) |
+                                @Ajax.ActionLink("Xóa", "Delete", new { id = item.MaPhieuPhatHanh }, new AjaxOptions
                            {
                                HttpMethod = "Delete",
                                Confirm = "Bạn muốn xóa bài viết này?",
-                               OnSuccess = "$('#row_" + @item.MaPhieuThu + "').remove()",
+                               OnSuccess = "$('#row_" + @item.MaPhieuPhatHanh + "').remove()",
                            })
                             </td>
                         </tr>
                     }
                 </table>
             </div>
-            <!-- /.box-body -->
-            <!-- /.box-footer -->
         </div>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount
     </div>
     <!-- /.box -->
 </div>
-
