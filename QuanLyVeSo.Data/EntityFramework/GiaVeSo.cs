@@ -22,10 +22,10 @@ namespace QuanLyVeSo.Data.EntityFramework
         public DateTime NgayBatDau { get; set; }
 
 
-        [Required(ErrorMessage = "Ngày kết thúc không được rỗng")]
+        
         [Display(Name = "Ngày kết thúc")]
         [Column(TypeName = "date")]
-        public DateTime NgayKetThuc { get; set; }
+        public DateTime? NgayKetThuc { get; set; }
 
         [Required]
         public bool TrangThai { get; set; }

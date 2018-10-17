@@ -84,7 +84,7 @@ namespace QuanLyVeSo.Data.Dao
             }
             return true;
         }
-        public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
+        public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 10)
         {
             var model = from c in db.DaiLy select c;
             if (!string.IsNullOrEmpty(query))
@@ -115,21 +115,7 @@ namespace QuanLyVeSo.Data.Dao
             return entity.TrangThai;
         }
 
-        public bool Delete(string maDaiLy)
-        {
-            try
-            {
-                var entity = GetSingle(maDaiLy);
-                db.DaiLy.Remove(entity);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
-
+        
         #endregion Methods
     }
 }
