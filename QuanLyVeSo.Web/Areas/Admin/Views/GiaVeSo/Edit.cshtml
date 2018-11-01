@@ -1,0 +1,72 @@
+﻿@model QuanLyVeSo.Data.EntityFramework.GiaVeSo
+
+@{
+    ViewBag.Title = "Cập nhật giá vé";
+}
+
+@section header{
+    <h1>Cập nhật giá vé</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/GiaVeSo">Giá vé số</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6 col-md-offset-2">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Thông tin giá vé</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Edit", "GiaVeSo", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="box-body">
+
+                    @Html.HiddenFor(model => model.MaGia)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gia)
+                        @Html.TextBoxFor(model => model.Gia, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NgayBatDau)
+                        @Html.TextBoxFor(model => model.NgayBatDau, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NgayKetThuc)
+                        @Html.TextBoxFor(model => model.NgayKetThuc, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NgayKetThuc, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TrangThai)
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(model => model.TrangThai)
+                                Kích hoạt
+                            </label>
+                            @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    @Html.ActionLink("Hủy", "Index", new object { }, new { @class = "btn btn-default col-md-offset-1" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

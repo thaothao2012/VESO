@@ -1,0 +1,75 @@
+﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.PhieuThu>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Phiếu thu";
+}
+
+@section header{
+    Quản lý phiếu thu
+}
+    
+    
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            @using (Html.BeginForm("Index", "PhieuThu", FormMethod.Get))
+            {
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách phiếu thu</h3>
+
+                    <div class="box-tools pull-right">
+
+                        <div class="input-group input-group-sm col-md-4 pull-right col-xs-offset-1">
+                            @Html.TextBox("query", ViewBag.CurrentFilter as string, new { @class = "form-control pull-right", @placeholder = "Tìm kiếm" })
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="/Admin/PhieuThu/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <th>Mã phiếu thu</th>
+                        <th>Mã đại lý</th>
+                        <th>Ngày thu</th>
+                        <th>Tiền thu</th>
+                        <th>Chức năng</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="row_@item.MaPhieuThu" class="">
+                            <td>@item.MaPhieuThu</td>
+                            <td>@item.MaDaiLy</td>
+                            <td>@item.NgayThu</td>
+                            <td>@item.TienThu</td>
+                            <td>
+                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaPhieuThu }) |
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaPhieuThu }) |
+                                @Ajax.ActionLink("Xóa", "Delete", new { id = item.MaPhieuThu }, new AjaxOptions
+                           {
+                               HttpMethod = "Delete",
+                               Confirm = "Bạn muốn xóa bài viết này?",
+                               OnSuccess = "$('#row_" + @item.MaPhieuThu + "').remove()",
+                           })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <!-- /.box-footer -->
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount
+    </div>
+    <!-- /.box -->
+</div>
+

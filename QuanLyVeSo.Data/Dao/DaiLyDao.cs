@@ -41,7 +41,7 @@ namespace QuanLyVeSo.Data.Dao
                 db.DaiLy.Add(entity);
                 db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -63,15 +63,28 @@ namespace QuanLyVeSo.Data.Dao
 
                 db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
 
             return true;
         }
-
-        public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
+        public bool Delete(string maDaiLy)
+        {
+            try
+            {
+                var entity = GetSingle(maDaiLy);
+                db.DaiLy.Remove(entity);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 10)
         {
             var model = from c in db.DaiLy select c;
 
@@ -89,6 +102,11 @@ namespace QuanLyVeSo.Data.Dao
             return db.DaiLy.FirstOrDefault(p => p.MaDaiLy == id);
         }
 
+        public IEnumerable<DaiLy> AllDaiLys()
+        {
+            return db.DaiLy;
+        }
+
         public bool ChangeStatus(string maDaiLy)
         {
             var entity = db.DaiLy.FirstOrDefault(p => p.MaDaiLy == maDaiLy);
@@ -98,21 +116,7 @@ namespace QuanLyVeSo.Data.Dao
             return entity.TrangThai;
         }
 
-        public bool Delete(string maDaiLy)
-        {
-            try
-            {
-                var entity = GetSingle(maDaiLy);
-                db.DaiLy.Remove(entity);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
-        }
-
+        
         #endregion Methods
     }
 }

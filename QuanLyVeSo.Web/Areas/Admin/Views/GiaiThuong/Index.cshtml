@@ -1,0 +1,77 @@
+﻿@model PagedList.IPagedList<QuanLyVeSo.Data.EntityFramework.GiaiThuong>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Giải Thưởng";
+}
+
+
+
+@section header{
+    <h1>Quản lý giải thưởng</h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="/Admin/GiaiThuong">Giải Thưởng</a></li>
+        <li class="active">Danh sách</li>
+    </ol>
+}
+
+@section scripts{
+    <script src="~/Assets/Admin/js/controller/giaithuongcontroller.js"></script>
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            @using (Html.BeginForm("Index", "GiaiThuong", FormMethod.Get))
+            {
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách giải thưởng</h3>
+
+                    <div class="box-tools pull-right">
+
+                        <div class="input-group input-group-sm col-md-4 pull-right col-xs-offset-1">
+                            @Html.TextBox("query", ViewBag.CurrentFilter as string, new { @class = "form-control pull-right", @placeholder = "Tìm kiếm" })
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="/Admin/GiaiThuong/Create" class="btn btn-info btn-sm"> <i class="fa  fa-plus"></i> Thêm mới</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <th>Mã giải thưởng</th>
+                        <th>Tên giải thưởng</th>
+                        <th>Tiền thưởng</th>
+                        <th>Chức năng</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr id="row_@item.MaGiaiThuong">
+                            <td>@item.MaGiaiThuong</td>
+                            <td>@item.TenGiai</td>
+                            <td>@item.TienThuong</td>
+                            <td>
+                                @Html.ActionLink("Chi tiết", "Detail", new { ID = item.MaGiaiThuong }) |
+                                @Html.ActionLink("Sửa", "Edit", new { ID = item.MaGiaiThuong }) |                      <a href="#" data-id="@item.MaGiaiThuong" class="btn-delete">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <!-- /.box-footer -->
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount
+    </div>
+    <!-- /.box -->
+</div>
