@@ -74,6 +74,7 @@ namespace QuanLyVeSo.Data.Dao
         public IEnumerable<DaiLy> ListPaged(int pageNumber, string query, int pageSize = 2)
         {
             var model = from c in db.DaiLy select c;
+
             if (!string.IsNullOrEmpty(query))
             {
                 model = model.Where(p => p.TenDaiLy.ToLower().Contains(query.ToLower())

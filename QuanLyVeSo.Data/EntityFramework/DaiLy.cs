@@ -21,10 +21,12 @@ namespace QuanLyVeSo.Data.EntityFramework
         [Column(TypeName = "nvarchar")]
         [StringLength(100)]
         [Required]
+        [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
         [Column(TypeName = "varchar")]
         [StringLength(15)]
+        [Display(Name ="Số điện thoại")]
         public string SoDienThoai { get; set; }
 
         [Column(TypeName = "varchar")]
@@ -33,6 +35,7 @@ namespace QuanLyVeSo.Data.EntityFramework
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Trạng thái")]
         public bool TrangThai { get; set; }
 
         public ICollection<CongNo> CongNos { get; set; }
